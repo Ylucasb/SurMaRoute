@@ -4,7 +4,6 @@ namespace SurMaRoute{
             // Génération de la map
             this.Start()
         }
-
         private void Start(){}
     }
 }
