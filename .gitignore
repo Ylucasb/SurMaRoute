@@ -1,4 +1,5 @@
 .git
 .bash
 obj
+bin
 .vscode

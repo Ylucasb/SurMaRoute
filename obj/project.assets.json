@@ -8,24 +8,26 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Mathis Ynov\\.nuget\\packages\\": {}
+    "C:\\Users\\Utilisateur\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mathis Ynov\\Documents\\B2\\C#\\Projet Final\\SurMaRoute\\SurMaRoute.csproj",
+      "projectUniqueName": "C:\\Users\\Utilisateur\\Desktop\\ynov\\b2\\C#\\SurMaRoute\\SurMaRoute.csproj",
       "projectName": "SurMaRoute",
-      "projectPath": "C:\\Users\\Mathis Ynov\\Documents\\B2\\C#\\Projet Final\\SurMaRoute\\SurMaRoute.csproj",
-      "packagesPath": "C:\\Users\\Mathis Ynov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mathis Ynov\\Documents\\B2\\C#\\Projet Final\\SurMaRoute\\obj\\",
+      "projectPath": "C:\\Users\\Utilisateur\\Desktop\\ynov\\b2\\C#\\SurMaRoute\\SurMaRoute.csproj",
+      "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Utilisateur\\Desktop\\ynov\\b2\\C#\\SurMaRoute\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Mathis Ynov\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -59,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }
