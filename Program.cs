@@ -6,7 +6,8 @@ namespace SurMaRoute
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Traffic traffic = new Traffic();
+            traffic.Start();
         }
     }
 }

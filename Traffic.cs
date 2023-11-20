@@ -1,10 +1,15 @@
+using System;
+using System.Collections;
+
 namespace SurMaRoute{
     class Traffic{
         public Traffic(){
             // Génération de la map
-            this.Start()
+            this.Start();
         }
 
-        private void Start(){}
+        public void Start(){
+
+        }
     }
 }
