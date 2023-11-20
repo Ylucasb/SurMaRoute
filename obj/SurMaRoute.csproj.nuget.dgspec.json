@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Mathis Ynov\\Documents\\B2\\C#\\Projet Final\\SurMaRoute\\SurMaRoute.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Mathis Ynov\\Documents\\B2\\C#\\Projet Final\\SurMaRoute\\SurMaRoute.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Mathis Ynov\\Documents\\B2\\C#\\Projet Final\\SurMaRoute\\SurMaRoute.csproj",
+        "projectName": "SurMaRoute",
+        "projectPath": "C:\\Users\\Mathis Ynov\\Documents\\B2\\C#\\Projet Final\\SurMaRoute\\SurMaRoute.csproj",
+        "packagesPath": "C:\\Users\\Mathis Ynov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mathis Ynov\\Documents\\B2\\C#\\Projet Final\\SurMaRoute\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mathis Ynov\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
