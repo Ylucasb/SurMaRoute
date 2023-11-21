@@ -16,16 +16,16 @@ namespace SurMaRoute
             set => _roadName = value;
         }
 
-        private Intersection? _exit1 = null;
+        private bool? _exit1 = null;
 
-        public Intersection? Exit1
+        public bool? Exit1
         {
             get => _exit1;
             set => _exit1 = value;
         }
-        private Intersection? _exit2 = null;
+        private bool? _exit2 = null;
 
-        public Intersection? Exit2
+        public bool? Exit2
         {
             get => _exit2;
             set => _exit2 = value;
@@ -46,7 +46,7 @@ namespace SurMaRoute
             set => _side2 = value;
         }
 
-        public Road(string roadName , int length, List<(int, Vehicle)> carsPositionsSide1, List<(int, Vehicle)> carsPositionsSide2, Intersection? entry = null, Intersection? exit = null)
+        public Road(string roadName, int length, List<(int, Vehicle)> carsPositionsSide1, List<(int, Vehicle)> carsPositionsSide2, bool? entry = null, bool? exit = null)
         {
             this.RoadLength = length;
             this.Side1 = GenerateNullListAndAddVehicle(length, carsPositionsSide1);
@@ -56,7 +56,7 @@ namespace SurMaRoute
             this.RoadName = roadName;
         }
 
-        public Road(string roadName , Intersection? entry = null, Intersection? exit = null)
+        public Road(string roadName, bool? entry = null, bool? exit = null)
         {
             Random random = new();
             int randomLength = random.Next(3, 20);
@@ -72,7 +72,21 @@ namespace SurMaRoute
 
         public int GetNumberVehicles()
         {
-            int TotalNb = this.Side1.Count + this.Side2.Count;
+            int TotalNb = 0;
+            foreach (var item in this.Side1)
+            {
+                if (item != null)
+                {
+                    TotalNb += 1;
+                }
+            }
+            foreach (var item in this.Side2)
+            {
+                if (item != null)
+                {
+                    TotalNb += 1;
+                }
+            }
             if (TotalNb == 0)
             {
                 Console.WriteLine("No cars on the road");
@@ -87,13 +101,13 @@ namespace SurMaRoute
             MoveSide(this.Side2, this.Exit2, "side2");
         }
 
-        private static void MoveSide(List<Vehicle?> side, Intersection? exit, string sideName)
+        private void MoveSide(List<Vehicle?> side, bool? exit, string sideName)
         {
             if (exit == null)
             {
                 side.RemoveAt(0);
                 side.Add(null);
-                Console.WriteLine($"The vehicle has exited the road on side {sideName} \n");
+                Console.WriteLine($"The vehicle has exited the road {RoadName} on side {sideName} \n");
             }
             else
             {
