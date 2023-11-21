@@ -46,7 +46,7 @@ namespace SurMaRoute
             set => _side2 = value;
         }
 
-        public Road(string roadName , int length, List<(int, Vehicle)> carsPositionsSide1, List<(int, Vehicle)> carsPositionsSide2, bool? entry = null, bool? exit = null)
+        public Road(string roadName, int length, List<(int, Vehicle)> carsPositionsSide1, List<(int, Vehicle)> carsPositionsSide2, bool? entry = null, bool? exit = null)
         {
             this.RoadLength = length;
             this.Side1 = GenerateNullListAndAddVehicle(length, carsPositionsSide1);
@@ -56,7 +56,7 @@ namespace SurMaRoute
             this.RoadName = roadName;
         }
 
-        public Road(string roadName , bool? entry = null, bool? exit = null)
+        public Road(string roadName, bool? entry = null, bool? exit = null)
         {
             Random random = new();
             int randomLength = random.Next(3, 20);
@@ -72,7 +72,21 @@ namespace SurMaRoute
 
         public int GetNumberVehicles()
         {
-            int TotalNb = this.Side1.Count + this.Side2.Count;
+            int TotalNb = 0;
+            foreach (var item in this.Side1)
+            {
+                if (item != null)
+                {
+                    TotalNb += 1;
+                }
+            }
+            foreach (var item in this.Side2)
+            {
+                if (item != null)
+                {
+                    TotalNb += 1;
+                }
+            }
             if (TotalNb == 0)
             {
                 Console.WriteLine("No cars on the road");
