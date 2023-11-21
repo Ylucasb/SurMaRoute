@@ -9,16 +9,16 @@ namespace SurMaRoute
             set => _roadLength = value;
         }
 
-        private Intersection _exit1 = null;
+        private Intersection? _exit1 = null;
 
-        public Intersection Exit1
+        public Intersection? Exit1
         {
             get => _exit1;
             set => _exit1 = value;
         }
-        private Intersection _exit2 = null;
+        private Intersection? _exit2 = null;
 
-        public Intersection Exit2
+        public Intersection? Exit2
         {
             get => _exit2;
             set => _exit2 = value;
@@ -39,102 +39,190 @@ namespace SurMaRoute
             set => _side2 = value;
         }
 
-        public Road(int length, List<int> carsPositionsSide1, List<int> carsPositionsSide2, Intersection? entry, Intersection? exit)
+        public Road(int length, List<(int, Vehicle)> carsPositionsSide1, List<(int, Vehicle)> carsPositionsSide2, Intersection? entry = null, Intersection? exit = null)
         {
             this.RoadLength = length;
-            List<Vehicle?> tempListSide1 = new();
-            for (int i = 0; i < length; i++)
-            {
-                tempListSide1.Add(null);
-            }
-            foreach (var car in carsPositionsSide1)
-            {
-                tempListSide1[car] = new Vehicle();
-            }
-            List<Vehicle?> tempListSide2 = new();
-            for (int i = 0; i < length; i++)
-            {
-                tempListSide2.Add(null);
-            }
-            foreach (var car in carsPositionsSide2)
-            {
-                tempListSide2[car] = new Vehicle();
-            }
-            this.Side1 = tempListSide1;
-            this.Side2 = tempListSide2;
+            this.Side1 = GenerateNullListAndAddVehicle(length, carsPositionsSide1);
+            this.Side2 = GenerateNullListAndAddVehicle(length, carsPositionsSide2);
             this.Exit1 = entry;
             this.Exit2 = exit;
 
         }
 
-        public void AddCar(string side)
+        public Road(int length, Intersection? entry = null, Intersection? exit = null)
         {
-            if (side == "0")
+            this.RoadLength = length;
+            List<(int, Vehicle)> randomList1 = GenerateRandomCarList(length);
+            List<(int, Vehicle)> randomList2 = GenerateRandomCarList(length);
+            this.Side1 = GenerateNullListAndAddVehicle(length, randomList1);
+            this.Side2 = GenerateNullListAndAddVehicle(length, randomList2);
+            this.Exit1 = entry;
+            this.Exit2 = exit;
+        }
+
+        public Road()
+        {
+            Random random = new();
+            int randomLength = random.Next(3, 20 + 1);
+            this.RoadLength = randomLength;
+            List<(int, Vehicle)> randomList1 = GenerateRandomCarList(randomLength);
+            List<(int, Vehicle)> randomList2 = GenerateRandomCarList(randomLength);
+            this.Side1 = GenerateNullListAndAddVehicle(randomLength, randomList1);
+            this.Side2 = GenerateNullListAndAddVehicle(randomLength, randomList2);
+        }
+
+        public void AddVehicle(string side, Vehicle vehicle)
+        {
+            switch (side)
             {
-                if (this.Side1.Last() != null)
-                {
-                    this.Side1[this.Side1.Count() - 1] = new Vehicle();
-                }
-            }
-            else
-            {
-                if (this.Side2.Last() != null)
-                {
-                    this.Side2[this.Side2.Count() - 1] = new Vehicle();
-                }
+                case "1":
+                    if (Side1.Last() == null)
+                    {
+                        Side1[^1] = vehicle;
+                        Console.WriteLine("Car added to Side 1");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Can't add car, Side 1 is full");
+                    }
+                    break;
+
+                case "2":
+                    if (Side2.Last() == null)
+                    {
+                        Side2[^1] = vehicle;
+                        Console.WriteLine("Car added to Side 2");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Can't add car, Side 2 is full");
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid side");
+                    break;
             }
         }
 
-        public int NumberCar()
+
+        public void DeleteCar(int position, string side)
+        {
+            switch (side)
+            {
+                case "1":
+                    if (position >= 0 && position < Side1.Count)
+                    {
+                        Side1[position] = null;
+                        Console.WriteLine("Car deleted from Side 1");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid position on Side 1");
+                    }
+                    break;
+
+                case "2":
+                    if (position >= 0 && position < Side2.Count)
+                    {
+                        Side2[position] = null;
+                        Console.WriteLine("Car deleted from Side 2");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid position on Side 2");
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid side");
+                    break;
+            }
+        }
+
+        public int GetNumberVehicles()
         {
             int TotalNb = this.Side1.Count + this.Side2.Count;
             if (TotalNb == 0)
             {
-                Console.WriteLine("no cars on the road");
+                Console.WriteLine("No cars on the road");
                 return -1;
             }
-            else
-            {
-                return TotalNb;
-            }
+            return TotalNb;
         }
 
-
+        public bool IsRoadFull()
+        {
+            return GetNumberVehicles() == this.RoadLength;
+        }
 
         public void Move()
         {
-            if (this.Exit1 == null)
+            Console.WriteLine("Vehicles have moved");
+            MoveSide(this.Side1, this.Exit1,"side1");
+            MoveSide(this.Side2, this.Exit2,"side2");
+        }
+
+        private static void MoveSide(List<Vehicle?> side, Intersection? exit , string sideName)
+        {
+            if (exit == null)
             {
-                this.Side1.RemoveAt(0);
-                this.Side1.Add(null);
-                Console.WriteLine("The vehicle has exit the road");
+                side.RemoveAt(0);
+                side.Add(null);
+                Console.WriteLine($"The vehicle has exited the road on side {sideName} \n");
             }
             else
             {
-                if (this.Side1[0] != null)
+                for (int i = 1; i < side.Count; i++)
                 {
-                    for (int i = 2; i < this.Side1.Count; i++)
+                    if (side[i] != null && side[i - 1] == null)
                     {
-                        this.Side1[i - 1] = this.Side1[i];
+                        side[i - 1] = side[i];
+                        side[i] = null;
                     }
                 }
-                else
-                {
-                    this.Side1.RemoveAt(0);
-                    this.Side1.Add(null);
-                }
-
-            }
-
-
-            if (this.Exit2 == null)
-            {
-                this.Side1.RemoveAt(0);
-                this.Side1.Add(null);
-                Console.WriteLine("The vehicle has exit the road");
             }
         }
 
+        private static List<(int, Vehicle)> GenerateRandomCarList(int numberOfElements)
+        {
+            List<(int, Vehicle)> tupleList = new();
+            Random random = new();
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                int randomInt = random.Next(10);
+                Car car = new();
+                tupleList.Add((randomInt, car));
+            }
+            return tupleList;
+        }
 
+        private static List<Vehicle?> GenerateNullListAndAddVehicle(int length, List<(int, Vehicle)> listVehicles)
+        {
+            List<Vehicle?> tempListSide = new(new Vehicle?[length]);
+            foreach (var (index, vehicle) in listVehicles)
+            {
+                tempListSide[index] = vehicle;
+            }
+            return tempListSide;
+        }
+
+        public static void DisplaySide(List<Vehicle?> side, string sideName)
+        {
+            Console.WriteLine(sideName);
+            foreach (Vehicle? valeur in side)
+            {
+                if (valeur == null)
+                {
+                    Console.WriteLine("null");
+                }
+                else
+                {
+                    Console.WriteLine(valeur.Icon);
+                }
+
+            }
+            Console.WriteLine("");
+        }
     }
 }
