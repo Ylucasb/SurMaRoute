@@ -11,23 +11,16 @@ namespace SurMaRoute
             _ = new CancellationTokenSource();
             _ = TrafficColor.ChangeColorAsync();
         }
-        public bool IfSelectedCarCanMove(Road road)
+        public bool IfSelectedCarCanMove(int currentIndex)
         {
-            var currentIndex = Roads.IndexOf(road);
-            Road exitRoad = Roads[RandomRangeExcept(Roads.Count, currentIndex)];
-            
-            if (currentIndex%2 == 0 && (TrafficColor.Color == TrafficLightColor.Green || TrafficColor.Color == TrafficLightColor.Orange)){
-                if (road.Side2[0] != null && exitRoad.Side1.Last() == null)
-                {
-                    return true;
-                }
-            }else if (TrafficColor.Color == TrafficLightColor.Red){
-                if (road.Side2[0] != null && exitRoad.Side1.Last() == null)
-                {
-                    return true;
-                }
+            if (currentIndex%2 == 0 && (TrafficColor.Color == TrafficLightColor.Green )){
+
+                return false;
+
+            }else if (currentIndex%2 != 0 && TrafficColor.Color == TrafficLightColor.Red || TrafficColor.Color == TrafficLightColor.Orange){
+                return false;
             }
-            return false;
+            return true;
         }
 
         public static int RandomRangeExcept (int max,int except)
