@@ -6,16 +6,16 @@ namespace SurMaRoute
     {
         static void Main(string[] args)
         {
-            bool inter = true;
-            Road road = new("road1" ,inter);
-            Console.WriteLine(road.RoadLength + " length");
-            Console.WriteLine();
+            Road road = new("road1",null , true);
             Road.DisplaySide(road.Side1, "side1");
             Road.DisplaySide(road.Side2, "side2");
-            road.GetNumberVehicles();
-            road.Move();
-            Road.DisplaySide(road.Side1, "side1");
-            Road.DisplaySide(road.Side2, "side2");
+            while (road.GetNumberVehicles() != -1)
+            {
+                Console.WriteLine(road.GetNumberVehicles());
+                road.Move();
+                Road.DisplaySide(road.Side1, "side1");
+                Road.DisplaySide(road.Side2, "side2");
+            }
         }
     }
 }
