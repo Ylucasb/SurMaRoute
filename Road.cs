@@ -103,11 +103,13 @@ namespace SurMaRoute
 
         private static void MoveSide(List<Vehicle?> side, bool? exit, string sideName)
         {
-            if (exit == null)
+            if (exit == null )
             {
+                if (side.First() != null) {
+                    Console.WriteLine($"Vehicle has exited the road {sideName}");
+                }
                 side.RemoveAt(0);
                 side.Add(null);
-                Console.WriteLine($"The vehicle has exited the road on side {sideName} \n");
             }
             else
             {
