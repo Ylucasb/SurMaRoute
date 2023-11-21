@@ -7,12 +7,9 @@ namespace SurMaRoute{
             set {_roads=value;}
         }
         public string Name {get;set;} = "";
-        public Intersection(string name){
+        public Intersection(string name, List<Road> roads){
             this.Name = name;
-            for (int i = 0; i < 4; i++)
-            {
-                _roads.Add(new Road());  
-            }
+            this._roads = roads;
         }
         public virtual void Move(){}
     }   

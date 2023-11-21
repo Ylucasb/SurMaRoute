@@ -1,15 +1,15 @@
 namespace SurMaRoute{
     class GiveWay : Intersection{
-        public GiveWay(string name):base(name){}
+        public GiveWay(string name, List<Road> roads):base(name, roads){}
         public override void Move(){
             if (AllRoadFull()){
                 Random rnd = new Random();
                 int indexRoad1 = rnd.Next(0, (Roads.Count-1));
                 MoveVehicle(indexRoad1);
             }
-            for (int i = 0; i < roads.Count; i++)
+            for (int i = 0; i < Roads.Count; i++)
             {
-                MoveVehicle(i, index)
+                MoveVehicle(i);
                 Roads[i].Move();
             }
         }
@@ -21,7 +21,7 @@ namespace SurMaRoute{
             if (AnyoneWantTurn(Roads[indexRoad1]) && !IsRoadFull(Roads[indexRoad2]) && IsNobodyOnLeft(Roads[indexRoad2])){
                 // Vehicle saveVehicle = Roads[i].Side1[road.Count-1]
                 (Roads[indexRoad2].Side2[Roads[indexRoad2].RoadLength-1], Roads[indexRoad1].Side2[0]) = (Roads[indexRoad1].Side2[0], Roads[indexRoad2].Side2[Roads[indexRoad2].RoadLength-1]);
-                Console.WriteLine(String.Format("{0} à quitté {1} pour {2}",Roads[indexRoad2].Side2[Roads[indexRoad2].RoadLength-1].Name, Roads[indexRoad1].Name, Roads[indexRoad2].Name));
+                Console.WriteLine(String.Format("{0} à quitté {1} pour {2}",Roads[indexRoad2].Side2[Roads[indexRoad2].RoadLength-1].Name, Roads[indexRoad1].RoadName, Roads[indexRoad2].RoadName));
                 // Roads[index].Side1[0] = saveVehicle
             }
         }
@@ -37,6 +37,15 @@ namespace SurMaRoute{
         private bool AllRoadFull(){
             for (int i = 0; i < Roads.Count; i++){
                 if (Roads[i].Side2[0] == null){
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool IsFinish(){
+            for (int i = 0; i < Roads.Count; i++)
+            {
+                if (Roads[i].GetNumberVehicles() != 0){
                     return false;
                 }
             }

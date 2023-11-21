@@ -6,11 +6,11 @@ namespace SurMaRoute
     {
         static void Main(string[] args)
         {
-            GiveWay GiveWay1 = new GiveWay1("side1");
-            Road road1 = new(10, GiveWay1);
-            Road road2 = new(10, GiveWay1);
-            Road road3 = new(10, GiveWay1);
-            Road road4 = new(10, GiveWay1);
+            List<Road> allRoads = new List<Road>{new("D1", true), new("D2", true), new("D3", true), new("D4", true)}
+            GiveWay GiveWay1 = new GiveWay("side1", allRoads);
+            while (!GiveWay1.IsFinish()){
+                GiveWay1.Move();
+            }
             // Console.WriteLine(road.RoadLength + " length");
             // Console.WriteLine();
             // Road.DisplaySide(road.Side1, "side1");
