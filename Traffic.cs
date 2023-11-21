@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+
 namespace SurMaRoute{
     class Traffic{
         public Traffic(){
@@ -5,6 +8,8 @@ namespace SurMaRoute{
             this.Start();
         }
 
-        private void Start(){}
+        public void Start(){
+
+        }
     }
 }
