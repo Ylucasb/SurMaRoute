@@ -16,16 +16,16 @@ namespace SurMaRoute
             set => _roadName = value;
         }
 
-        private Intersection? _exit1 = null;
+        private bool? _exit1 = null;
 
-        public Intersection? Exit1
+        public bool? Exit1
         {
             get => _exit1;
             set => _exit1 = value;
         }
-        private Intersection? _exit2 = null;
+        private bool? _exit2 = null;
 
-        public Intersection? Exit2
+        public bool? Exit2
         {
             get => _exit2;
             set => _exit2 = value;
@@ -46,7 +46,7 @@ namespace SurMaRoute
             set => _side2 = value;
         }
 
-        public Road(string roadName , int length, List<(int, Vehicle)> carsPositionsSide1, List<(int, Vehicle)> carsPositionsSide2, Intersection? entry = null, Intersection? exit = null)
+        public Road(string roadName , int length, List<(int, Vehicle)> carsPositionsSide1, List<(int, Vehicle)> carsPositionsSide2, bool? entry = null, bool? exit = null)
         {
             this.RoadLength = length;
             this.Side1 = GenerateNullListAndAddVehicle(length, carsPositionsSide1);
@@ -56,7 +56,7 @@ namespace SurMaRoute
             this.RoadName = roadName;
         }
 
-        public Road(string roadName , Intersection? entry = null, Intersection? exit = null)
+        public Road(string roadName , bool? entry = null, bool? exit = null)
         {
             Random random = new();
             int randomLength = random.Next(3, 20);
@@ -87,7 +87,7 @@ namespace SurMaRoute
             MoveSide(this.Side2, this.Exit2, "side2");
         }
 
-        private static void MoveSide(List<Vehicle?> side, Intersection? exit, string sideName)
+        private static void MoveSide(List<Vehicle?> side, bool? exit, string sideName)
         {
             if (exit == null)
             {
