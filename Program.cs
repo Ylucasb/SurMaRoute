@@ -7,7 +7,7 @@ namespace SurMaRoute
         static void Main(string[] args)
         {
             Intersection inter = new("side1");
-            Road road = new(10, inter);
+            Road road = new("road1" ,inter);
             Console.WriteLine(road.RoadLength + " length");
             Console.WriteLine();
             Road.DisplaySide(road.Side1, "side1");

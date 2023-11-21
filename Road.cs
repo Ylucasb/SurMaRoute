@@ -9,6 +9,13 @@ namespace SurMaRoute
             set => _roadLength = value;
         }
 
+        private string _roadName = "Unknown";
+        public string RoadName
+        {
+            get => _roadName;
+            set => _roadName = value;
+        }
+
         private Intersection? _exit1 = null;
 
         public Intersection? Exit1
@@ -39,105 +46,28 @@ namespace SurMaRoute
             set => _side2 = value;
         }
 
-        public Road(int length, List<(int, Vehicle)> carsPositionsSide1, List<(int, Vehicle)> carsPositionsSide2, Intersection? entry = null, Intersection? exit = null)
+        public Road(string roadName , int length, List<(int, Vehicle)> carsPositionsSide1, List<(int, Vehicle)> carsPositionsSide2, Intersection? entry = null, Intersection? exit = null)
         {
             this.RoadLength = length;
             this.Side1 = GenerateNullListAndAddVehicle(length, carsPositionsSide1);
             this.Side2 = GenerateNullListAndAddVehicle(length, carsPositionsSide2);
             this.Exit1 = entry;
             this.Exit2 = exit;
-
+            this.RoadName = roadName;
         }
 
-        public Road(int length, Intersection? entry = null, Intersection? exit = null)
-        {
-            this.RoadLength = length;
-            List<(int, Vehicle)> randomList1 = GenerateRandomCarList(length);
-            List<(int, Vehicle)> randomList2 = GenerateRandomCarList(length);
-            this.Side1 = GenerateNullListAndAddVehicle(length, randomList1);
-            this.Side2 = GenerateNullListAndAddVehicle(length, randomList2);
-            this.Exit1 = entry;
-            this.Exit2 = exit;
-        }
-
-        public Road()
+        public Road(string roadName , Intersection? entry = null, Intersection? exit = null)
         {
             Random random = new();
-            int randomLength = random.Next(3, 20 + 1);
+            int randomLength = random.Next(3, 20);
             this.RoadLength = randomLength;
             List<(int, Vehicle)> randomList1 = GenerateRandomCarList(randomLength);
             List<(int, Vehicle)> randomList2 = GenerateRandomCarList(randomLength);
             this.Side1 = GenerateNullListAndAddVehicle(randomLength, randomList1);
             this.Side2 = GenerateNullListAndAddVehicle(randomLength, randomList2);
-        }
-
-        public void AddVehicle(string side, Vehicle vehicle)
-        {
-            switch (side)
-            {
-                case "1":
-                    if (Side1.Last() == null)
-                    {
-                        Side1[^1] = vehicle;
-                        Console.WriteLine("Car added to Side 1");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Can't add car, Side 1 is full");
-                    }
-                    break;
-
-                case "2":
-                    if (Side2.Last() == null)
-                    {
-                        Side2[^1] = vehicle;
-                        Console.WriteLine("Car added to Side 2");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Can't add car, Side 2 is full");
-                    }
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid side");
-                    break;
-            }
-        }
-
-
-        public void DeleteCar(int position, string side)
-        {
-            switch (side)
-            {
-                case "1":
-                    if (position >= 0 && position < Side1.Count)
-                    {
-                        Side1[position] = null;
-                        Console.WriteLine("Car deleted from Side 1");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid position on Side 1");
-                    }
-                    break;
-
-                case "2":
-                    if (position >= 0 && position < Side2.Count)
-                    {
-                        Side2[position] = null;
-                        Console.WriteLine("Car deleted from Side 2");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid position on Side 2");
-                    }
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid side");
-                    break;
-            }
+            this.Exit1 = entry;
+            this.Exit2 = exit;
+            this.RoadName = roadName;
         }
 
         public int GetNumberVehicles()
@@ -150,20 +80,14 @@ namespace SurMaRoute
             }
             return TotalNb;
         }
-
-        public bool IsRoadFull()
-        {
-            return GetNumberVehicles() == this.RoadLength;
-        }
-
         public void Move()
         {
             Console.WriteLine("Vehicles have moved");
-            MoveSide(this.Side1, this.Exit1,"side1");
-            MoveSide(this.Side2, this.Exit2,"side2");
+            MoveSide(this.Side1, this.Exit1, "side1");
+            MoveSide(this.Side2, this.Exit2, "side2");
         }
 
-        private static void MoveSide(List<Vehicle?> side, Intersection? exit , string sideName)
+        private static void MoveSide(List<Vehicle?> side, Intersection? exit, string sideName)
         {
             if (exit == null)
             {
@@ -190,7 +114,7 @@ namespace SurMaRoute
             Random random = new();
             for (int i = 0; i < numberOfElements; i++)
             {
-                int randomInt = random.Next(10);
+                int randomInt = random.Next(numberOfElements);
                 Car car = new();
                 tupleList.Add((randomInt, car));
             }
@@ -220,7 +144,6 @@ namespace SurMaRoute
                 {
                     Console.WriteLine(valeur.Icon);
                 }
-
             }
             Console.WriteLine("");
         }
