@@ -1,0 +1,5 @@
+namespace SurMaRoute {
+    class Vehicle {
+        
+    }
+}
