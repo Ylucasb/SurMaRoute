@@ -16,13 +16,14 @@ namespace SurMaRoute
             get => _destination;
             set => _destination = value;
         }
-
-        public void SetDesination(int start , int end){
+        public void SetPosition(int roadIndex){
             Random rand = new();
-            int newDestination = rand.Next(start , end + 1);
+            int newDestination = rand.Next(0 , 3);
+            while (newDestination != roadIndex){
+                newDestination = rand.Next(0 , 3);
+            }
             this.Destination = newDestination;
         }
-
         public Car() { }
     }
 }

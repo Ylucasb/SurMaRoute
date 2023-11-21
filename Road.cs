@@ -105,9 +105,12 @@ namespace SurMaRoute
         {
             if (exit == null)
             {
+                if (side.First() != null)
+                {
+                    Console.WriteLine($"Vehicle has exited the road {sideName}");
+                }
                 side.RemoveAt(0);
                 side.Add(null);
-                Console.WriteLine($"The vehicle has exited the road {RoadName} on side {sideName} \n");
             }
             else
             {
@@ -144,22 +147,33 @@ namespace SurMaRoute
             }
             return tempListSide;
         }
-
-        public static void DisplaySide(List<Vehicle?> side, string sideName)
+        public void DisplayRoad()
         {
-            Console.WriteLine(sideName);
-            foreach (Vehicle? valeur in side)
+            Console.WriteLine("Current road : " + this.RoadName);
+            for (int i = 0; i < this.Side1.Count; i++)
             {
-                if (valeur == null)
+                string temp = "| ";
+                if (this.Side1[i] == null)
                 {
-                    Console.WriteLine("null");
+                    temp += "  ";
                 }
                 else
                 {
-                    Console.WriteLine(valeur.Icon);
+                    temp += this.Side1[i]?.Icon;
                 }
+                temp += " : ";
+                if (this.Side2[i] == null)
+                {
+                    temp += "  ";
+                }
+                else
+                {
+                    temp += this.Side2[i]?.Icon;
+                }
+                temp += " |";
+                Console.WriteLine(temp);
+
             }
-            Console.WriteLine("");
         }
     }
 }
