@@ -1,19 +1,19 @@
 namespace SurMaRoute{
-    abstract class Intersection{
-        private List<Road> _roads = new List<Road>();
-        public List<Road> roads 
+     public abstract class Intersection{
+        private List<Road> _roads = new();
+        public List<Road> Roads 
         {
             get {return _roads;}
             set {_roads=value;}
         }
-        public string name {get;set;} = "";
+        public string Name {get;set;} = "";
         public Intersection(string name){
-            this.name = name;
+            this.Name = name;
             for (int i = 0; i < 4; i++)
             {
                 _roads.Add(new Road());  
             }
         }
-        public void Moov(){}
+        public override void Move(){}
     }   
 }
