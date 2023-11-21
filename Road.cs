@@ -1,6 +1,6 @@
 namespace SurMaRoute
 {
-    class Road
+    public class Road
     {
         private int _roadLength;
         public int RoadLength
@@ -190,7 +190,7 @@ namespace SurMaRoute
             Random random = new();
             for (int i = 0; i < numberOfElements; i++)
             {
-                int randomInt = random.Next(10);
+                int randomInt = random.Next(numberOfElements);
                 Car car = new();
                 tupleList.Add((randomInt, car));
             }

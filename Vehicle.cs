@@ -1,5 +1,5 @@
 namespace SurMaRoute {
-    abstract class Vehicle {
+    public abstract class Vehicle {
         public virtual string Name { get; set; } = "";
         public virtual string Icon { get; set; } = "";
 
