@@ -1,6 +1,6 @@
 namespace SurMaRoute
 {
-    class Road
+    public class Road
     {
         private int _roadLength;
         public int RoadLength
