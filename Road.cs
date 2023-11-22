@@ -1,6 +1,6 @@
 namespace SurMaRoute
 {
-    class Road
+    public class Road
     {
         private int _roadLength;
         public int RoadLength
@@ -101,7 +101,7 @@ namespace SurMaRoute
             MoveSide(this.Side2, this.Exit2, "side2");
         }
 
-        private static void MoveSide(List<Vehicle?> side, bool? exit, string sideName)
+        private void MoveSide(List<Vehicle?> side, bool? exit, string sideName)
         {
             if (exit == null)
             {

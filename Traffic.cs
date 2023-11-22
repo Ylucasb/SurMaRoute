@@ -7,7 +7,6 @@ namespace SurMaRoute{
             // Génération de la map
             this.Start();
         }
-
         public void Start(){
 
         }
