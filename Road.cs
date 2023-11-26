@@ -59,7 +59,7 @@ namespace SurMaRoute
         public Road(string roadName, bool? entry = null, bool? exit = null)
         {
             Random random = new();
-            int randomLength = random.Next(3, 20);
+            int randomLength = random.Next(5, 20);
             this.RoadLength = randomLength;
             List<(int, Vehicle)> randomList1 = GenerateRandomCarList(randomLength);
             List<(int, Vehicle)> randomList2 = GenerateRandomCarList(randomLength);
@@ -96,7 +96,7 @@ namespace SurMaRoute
         }
         public void Move()
         {
-            Console.WriteLine("Vehicles have moved");
+            // Console.WriteLine("Vehicles have moved");
             MoveSide(this.Side1, this.Exit1, "side1");
             MoveSide(this.Side2, this.Exit2, "side2");
         }
@@ -107,7 +107,7 @@ namespace SurMaRoute
             {
                 if (side.First() != null)
                 {
-                    Console.WriteLine($"Vehicle has exited the road {sideName}");
+                    // Console.WriteLine($"Vehicle has exited the road {RoadName} {sideName}");
                 }
                 side.RemoveAt(0);
                 side.Add(null);

@@ -41,7 +41,6 @@ namespace SurMaRoute
                         break;
                 }
                 await Task.Delay(2000); // Wait for 2 seconds
-                Console.WriteLine(Color);
             }
         }
     }
