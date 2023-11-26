@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bigot\\OneDrive\\Bureau\\Ynov\\B2\\C#\\SurMaRoute\\SurMaRoute.csproj": {}
+    "C:\\Users\\chaff\\OneDrive\\Documents\\Ynov\\Projets\\SurMaRoute\\SurMaRoute.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bigot\\OneDrive\\Bureau\\Ynov\\B2\\C#\\SurMaRoute\\SurMaRoute.csproj": {
+    "C:\\Users\\chaff\\OneDrive\\Documents\\Ynov\\Projets\\SurMaRoute\\SurMaRoute.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bigot\\OneDrive\\Bureau\\Ynov\\B2\\C#\\SurMaRoute\\SurMaRoute.csproj",
+        "projectUniqueName": "C:\\Users\\chaff\\OneDrive\\Documents\\Ynov\\Projets\\SurMaRoute\\SurMaRoute.csproj",
         "projectName": "SurMaRoute",
-        "projectPath": "C:\\Users\\bigot\\OneDrive\\Bureau\\Ynov\\B2\\C#\\SurMaRoute\\SurMaRoute.csproj",
-        "packagesPath": "C:\\Users\\bigot\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bigot\\OneDrive\\Bureau\\Ynov\\B2\\C#\\SurMaRoute\\obj\\",
+        "projectPath": "C:\\Users\\chaff\\OneDrive\\Documents\\Ynov\\Projets\\SurMaRoute\\SurMaRoute.csproj",
+        "packagesPath": "C:\\Users\\chaff\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chaff\\OneDrive\\Documents\\Ynov\\Projets\\SurMaRoute\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\bigot\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\chaff\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

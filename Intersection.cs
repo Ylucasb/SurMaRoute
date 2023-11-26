@@ -57,8 +57,8 @@ namespace SurMaRoute{
             Console.Clear();
             
             VerticalRoad(Roads[0],false);
-            RoadLineDisplay("_");
-            RoadLineDisplay(" ");
+            RoadLineDisplay(" _");
+            RoadLineDisplay("  ");
             HorizontalRoad(false,Roads[3].Side1,Roads[3].RoadLength);
             for (int i = 0; i < 9; i++)
             {
@@ -66,15 +66,15 @@ namespace SurMaRoute{
             }
             HorizontalRoad(false,Roads[1].Side2,Roads[1].RoadLength);
             Console.WriteLine();
-            RoadLineDisplay("-");
+            RoadLineDisplay(" -");
             HorizontalRoad(true,Roads[3].Side2,Roads[3].RoadLength);
             for (int i = 0; i < 9; i++)
             {
-                Console.Write(" ");
+                Console.Write("  ");
             }
             HorizontalRoad(true,Roads[1].Side1,Roads[1].RoadLength);
             Console.WriteLine();
-            RoadLineDisplay("_");
+            RoadLineDisplay(" _");
             VerticalRoad(Roads[2],true);
         }
 
@@ -92,7 +92,7 @@ namespace SurMaRoute{
                 line.Append(" ");
             }
 
-            for (int i = 0; i < Roads[1].RoadLength; i++)
+            for (int i = 0; i < Roads[1].RoadLength + 5; i++)
             {
                 line.Append(character);
             }
@@ -114,7 +114,7 @@ namespace SurMaRoute{
                 }
                 else
                 {
-                    Console.Write(" ");
+                    Console.Write("  ");
                 }
             }
         }
@@ -124,7 +124,7 @@ namespace SurMaRoute{
             {
                 for (int j = 0; j <  Roads[3].RoadLength; j++)
                 {
-                    Console.Write(" ");
+                    Console.Write("  ");
                 }
                 Console.Write("|");
                 Console.Write(" ");
@@ -137,7 +137,7 @@ namespace SurMaRoute{
                     }
                     else
                     {
-                        Console.Write(" ");
+                        Console.Write("  ");
                     }
 
                 }else{
@@ -147,7 +147,7 @@ namespace SurMaRoute{
                     }
                     else
                     {
-                        Console.Write(" ");
+                        Console.Write("  ");
                     }
                 }
                 Console.Write(" ");
@@ -161,7 +161,7 @@ namespace SurMaRoute{
                     }
                     else
                     {
-                        Console.Write(" ");
+                        Console.Write("  ");
                     }
                 }else{
                     if (road.Side2[i] != null)
@@ -170,7 +170,7 @@ namespace SurMaRoute{
                     }
                     else
                     {
-                        Console.Write(" ");
+                        Console.Write("  ");
                     }
                 }
                 Console.Write(" ");
