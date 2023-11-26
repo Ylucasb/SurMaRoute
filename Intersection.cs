@@ -11,7 +11,6 @@ namespace SurMaRoute{
         }
         public string Name {get;set;} = "";
         public TrafficLight? TrafficLight { get; private set; }
-        private string CarDisplay { get;} = "🚗"; //change the caracter to display the car (🚗,🚙,🏎️)
 
         public Intersection(string name, List<Road> roads){
             this.Name = name;
@@ -70,7 +69,7 @@ namespace SurMaRoute{
             HorizontalRoad(true,Roads[3].Side2,Roads[3].RoadLength);
             for (int i = 0; i < 9; i++)
             {
-                Console.Write("  ");
+                Console.Write(" ");
             }
             HorizontalRoad(true,Roads[1].Side1,Roads[1].RoadLength);
             Console.WriteLine();
@@ -92,7 +91,7 @@ namespace SurMaRoute{
                 line.Append(" ");
             }
 
-            for (int i = 0; i < Roads[1].RoadLength + 5; i++)
+            for (int i = 0; i < Roads[1].RoadLength; i++)
             {
                 line.Append(character);
             }
@@ -106,11 +105,11 @@ namespace SurMaRoute{
 
                 if (side[i] != null && !reverse)
                 {
-                    Console.Write(CarDisplay);
+                    Console.Write(side[i]!.Icon);
                 }
                 else if (side[side.Count-1-i] != null && reverse)
                 {
-                    Console.Write(CarDisplay);
+                    Console.Write(side[side.Count-1-i]!.Icon );
                 }
                 else
                 {
@@ -133,7 +132,7 @@ namespace SurMaRoute{
                 {
                     if (road.Side2[road.RoadLength-1-i]  != null )
                     {
-                        Console.Write(CarDisplay);
+                        Console.Write(road.Side2[road.RoadLength-1-i]!.Icon);
                     }
                     else
                     {
@@ -143,7 +142,7 @@ namespace SurMaRoute{
                 }else{
                     if (road.Side1[road.RoadLength-1-i] != null)
                     {
-                        Console.Write(CarDisplay);
+                        Console.Write(road.Side1[road.RoadLength-1-i]!.Icon);
                     }
                     else
                     {
@@ -157,7 +156,7 @@ namespace SurMaRoute{
                 {
                     if ( road.Side1[i]!= null)
                     {
-                        Console.Write(CarDisplay);
+                        Console.Write(road.Side1[i]!.Icon);
                     }
                     else
                     {
@@ -166,7 +165,7 @@ namespace SurMaRoute{
                 }else{
                     if (road.Side2[i] != null)
                     {
-                        Console.Write(CarDisplay);
+                        Console.Write(road.Side2[i]!.Icon);
                     }
                     else
                     {

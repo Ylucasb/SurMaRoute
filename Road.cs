@@ -128,12 +128,14 @@ namespace SurMaRoute
         private static List<(int, Vehicle)> GenerateRandomCarList(int numberOfElements)
         {
             List<(int, Vehicle)> tupleList = new();
+            List<Vehicle> listVehicles = new(){ new Car(), new Truck() };
             Random random = new();
             for (int i = 0; i < numberOfElements; i++)
             {
                 int randomInt = random.Next(numberOfElements);
-                Car car = new();
-                tupleList.Add((randomInt, car));
+                int randomIntVehicleType = random.Next(listVehicles.Count);
+                Vehicle vehicle = listVehicles[randomIntVehicleType];
+                tupleList.Add((randomInt, vehicle));
             }
             return tupleList;
         }
