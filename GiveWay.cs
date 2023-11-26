@@ -10,6 +10,7 @@ namespace SurMaRoute{
                 indexRoad1 = rnd.Next(0, Roads.Count-1);
                 MoveVehicle(indexRoad1);
                 Roads[indexRoad1].Move();
+                Console.WriteLine(String.Format("L'intersection est bloqué la voiture 1 de la voie {0} passe en premier", Roads[indexRoad1].RoadName));
             } 
             for (int i = 0; i < Roads.Count; i++)
             {
@@ -18,6 +19,7 @@ namespace SurMaRoute{
                     Roads[i].Move();
                 }
             }
+            
         }
         public override bool IsPossibleToMove(int indexRoad){
             return Roads[indexRoad].Side1[0] == null && Roads[indexRoad].Side1[1] == null;
