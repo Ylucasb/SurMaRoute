@@ -11,7 +11,7 @@ namespace SurMaRoute{
         }
         public string Name {get;set;} = "";
         public TrafficLight? TrafficLight { get; private set; }
-        private string CarDisplay { get;} = "*"; //change the caracter to display the car (🚗,🚙,🏎️)
+        private string CarDisplay { get;} = "🚗"; //change the caracter to display the car (🚗,🚙,🏎️)
 
         public Intersection(string name, List<Road> roads){
             this.Name = name;
