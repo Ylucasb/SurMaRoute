@@ -1,3 +1,5 @@
+using System.Data.Common;
+
 namespace SurMaRoute
 {
     public class Road
@@ -8,38 +10,31 @@ namespace SurMaRoute
             get => _roadLength;
             set => _roadLength = value;
         }
-
         private string _roadName = "Unknown";
         public string RoadName
         {
             get => _roadName;
             set => _roadName = value;
         }
-
         private bool? _exit1 = null;
-
         public bool? Exit1
         {
             get => _exit1;
             set => _exit1 = value;
         }
         private bool? _exit2 = null;
-
         public bool? Exit2
         {
             get => _exit2;
             set => _exit2 = value;
         }
-
         private List<Vehicle?> _side1 = new(0); // exit 
-
         public List<Vehicle?> Side1
         {
             get => _side1;
             set => _side1 = value;
         }
         private List<Vehicle?> _side2 = new(0); // entry
-
         public List<Vehicle?> Side2
         {
             get => _side2;
@@ -89,7 +84,7 @@ namespace SurMaRoute
             }
             if (TotalNb == 0)
             {
-                Console.WriteLine("No cars on the road");
+                Console.WriteLine(String.Format("No cars on the road : {0}", RoadName));
                 return -1;
             }
             return TotalNb;
@@ -107,7 +102,7 @@ namespace SurMaRoute
             {
                 if (side.First() != null)
                 {
-                    // Console.WriteLine($"Vehicle has exited the road {RoadName} {sideName}");
+                    Console.WriteLine($"Vehicle has exited the road {RoadName} {sideName}");
                 }
                 side.RemoveAt(0);
                 side.Add(null);
@@ -118,6 +113,7 @@ namespace SurMaRoute
                 {
                     if (side[i] != null && side[i - 1] == null)
                     {
+                        Console.WriteLine(String.Format("A vehicle moves forward on the road {0} lane {1}", RoadName, sideName));
                         side[i - 1] = side[i];
                         side[i] = null;
                     }

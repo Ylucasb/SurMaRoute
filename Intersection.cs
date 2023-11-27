@@ -17,7 +17,7 @@ namespace SurMaRoute{
             this._roads = roads;
         }
         public virtual void Move(){}
-        public virtual bool IsPossibleToMove(int indexRoad){return true;}
+        public virtual bool IsPossibleToMove(int indexRoad,string vehicleName){return true;}
         protected void MoveVehicle(int indexRoad1){
             int indexRoad2 = indexRoad1-1;
             if (indexRoad2 < 0){
@@ -31,7 +31,7 @@ namespace SurMaRoute{
                 if (firstVehicle != null)
                 {
                     positionWanted = firstVehicle.SetPositionWanted(indexRoad1);
-                    if (positionWanted != -1 && IsWantedRoadAvailable(Roads[positionWanted]) && IsPossibleToMove(indexRoad2)){
+                    if (positionWanted != -1 && IsWantedRoadAvailable(Roads[positionWanted]) && IsPossibleToMove(indexRoad2, firstVehicle.Name)){
                         (Roads[positionWanted].Side1[Roads[positionWanted].RoadLength-1], Roads[indexRoad1].Side2[0]) = (Roads[indexRoad1].Side2[0], Roads[positionWanted].Side1[Roads[positionWanted].RoadLength-1]);
                         Console.WriteLine(String.Format("{0} à quitté {1} pour {2}", firstVehicle.Name, Roads[indexRoad1].RoadName, Roads[positionWanted].RoadName));
                     }

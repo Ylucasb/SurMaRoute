@@ -10,15 +10,16 @@ namespace SurMaRoute
             _ = new CancellationTokenSource();
             _ = TrafficColor.ChangeColorAsync();
         }
-        public override bool IsPossibleToMove(int currentIndex)
+        public override bool IsPossibleToMove(int currentIndex, string vehicleName)
         {
             if (currentIndex%2 == 0 && (TrafficColor.Color == TrafficLightColor.Green )){
-
+                Console.WriteLine(String.Format("Light is green {0} does not passes", vehicleName));
                 return false;
-
             }else if (currentIndex%2 != 0 && TrafficColor.Color == TrafficLightColor.Red || TrafficColor.Color == TrafficLightColor.Orange){
+                Console.WriteLine(String.Format("Light isn't green {0} does not passes", vehicleName));
                 return false;
             }
+            Console.WriteLine(String.Format("Light is green {0} passes", vehicleName));
             return true;
         }
         public static int RandomRangeExcept (int max,int except)
