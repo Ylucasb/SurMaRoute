@@ -15,9 +15,9 @@ namespace SurMaRoute{
                 string? userInput = "y";
                 if (userInput != null){
                     _allIntersection[0].Move();
-                    // _allIntersection[0].DisplayRoad();
+                    // _allIntersection[0].DisplayRoad(); // Graphic display
                     // _allIntersection[1].Move();
-                    // _allIntersection[1].DisplayRoad();
+                    // _allIntersection[1].DisplayRoad(); // Graphic display
                 }
             }
         }
