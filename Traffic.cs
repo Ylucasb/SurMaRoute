@@ -10,14 +10,14 @@ namespace SurMaRoute{
         }
         private void Start(){
             while (!_allIntersection[0].IsFinish() && !_allIntersection[1].IsFinish()){
-                // Console.Write("Entrez quelque chose : ");
-                // string? userInput = Console.ReadLine();
-                string? userInput = "y";
+                Console.Write("Entrez quelque chose : ");
+                string? userInput = Console.ReadLine();
+                // string? userInput = "y";
                 if (userInput != null){
                     _allIntersection[0].Move();
-                    // _allIntersection[0].DisplayRoad(); // Graphic display
-                    // _allIntersection[1].Move();
-                    // _allIntersection[1].DisplayRoad(); // Graphic display
+                    _allIntersection[0].DisplayRoad(); // Graphic display
+                    _allIntersection[1].Move();
+                    _allIntersection[1].DisplayRoad(); // Graphic display
                 }
             }
         }

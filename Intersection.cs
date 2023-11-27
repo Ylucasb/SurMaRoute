@@ -33,7 +33,7 @@ namespace SurMaRoute{
                     positionWanted = firstVehicle.SetPositionWanted(indexRoad1);
                     if (positionWanted != -1 && IsWantedRoadAvailable(Roads[positionWanted]) && IsPossibleToMove(indexRoad2, firstVehicle.Name)){
                         (Roads[positionWanted].Side1[Roads[positionWanted].RoadLength-1], Roads[indexRoad1].Side2[0]) = (Roads[indexRoad1].Side2[0], Roads[positionWanted].Side1[Roads[positionWanted].RoadLength-1]);
-                        Console.WriteLine(String.Format("{0} à quitté {1} pour {2}", firstVehicle.Name, Roads[indexRoad1].RoadName, Roads[positionWanted].RoadName));
+                        Console.WriteLine(String.Format("{0} has exited the road {1} for {2}", firstVehicle.Name, Roads[indexRoad1].RoadName, Roads[positionWanted].RoadName));
                     }
                 }
             }
@@ -54,7 +54,6 @@ namespace SurMaRoute{
         public void DisplayRoad()
         {
             Console.Clear();
-            
             VerticalRoad(Roads[0],false);
             RoadLineDisplay(" _");
             RoadLineDisplay("  ");
